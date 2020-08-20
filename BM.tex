@@ -12,17 +12,20 @@
 \declaretheorem[name=Aufgabe, thmbox = L]{aufgabe}
 \declaretheorem[name=Lemma]{lemma}
 \counterwithin*{lemma}{aufgabe}
+\counterwithin*{equation}{aufgabe}
 \newcommand{\aufgabelabelname}{\theaufgabe . Aufgabe}
 \renewcommand\qedsymbol{$\blacksquare$}
 
 \usepackage{physics}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\fancyheadoffset{0cm} 
 \usepackage[
   a4paper,
   right=6cm,
   footskip=3em,
   twoside=false,
+  lmargin=1.4cm,
   xetex
 ]{geometry}
 \usepackage{unicode-math}
@@ -67,7 +70,7 @@
 \begin{document}
 \thispagestyle{fancy}
 \begin{aufgabe}
-  Leo und Smilla finden 2020 Goldnuggets mit den Massen 1, 2, ..., 2020 Gramm,
+  Leo und Smilla finden 2020 Goldnuggets mit den Massen 1, 2, ..., 2020 Gramm,
   die sie nach folgender Regel auf eine rote und eine blaue Schatztruhe
   verteilen:
   
@@ -91,68 +94,58 @@
   werden.
 \end{lemma}
 \begin{proof}
-  Für einen verständlicheren Beweis werden die Nuggets jeweils nach ihrer Masse
-  benannt. Nugget 1234 steht also für das Nugget mit der Masse 1234g.\\
-
-  Zuerst wird eine Obergrenze für Smillas Schatz gegeben. Für die Situation vor
-  der Vergabe des letzten Nuggets $n_{2020}$ in die beiden Truhen mit Gewicht
-  $r_{2019}$ und $b_{2019}$ gilt:
+  Für einen einfacher lesbaren Beweis werden die Nuggets jeweils nach ihrer
+  Masse benannt. Nugget $1234$ steht also für das Nugget mit der Masse $1234$g.
+  
+  Zuerst wird die Obergrenze für Smillas maximalen Schatz bestimmt. Für die
+  Situation vor der Vergabe des letzten Nuggets $n_{2020}$ in die beiden Truhen
+  mit Gewicht $r_{2019}$ und $b_{2019}$ gilt unter Anwendung
+  von~\autoref{sec1:Zahlensumme}:
   \begin{equation}\label{sec1:equation1}
-    r_{2019}+b_{2019}=\sum_{k=1}^{2020}\left(k\right)-n=\dfrac{2020\cdot2021}{2}-n\qquad|\text{Anwendung
-      \autoref{sec1:Zahlensumme}}
+    r_{2019}+b_{2019}=\sum_{k=1}^{2020}\left(k\right)-n_{2020}=\dfrac{2020\cdot2021}{2}-n_{2020}
   \end{equation}
-
-  Da Smilla sich nach der Aufteilung ihre Truhe aussuchen darf und daher die
-  Schwerere wählen wird, wird Leo logischerweise die leichtere Truhe für das
-  letzte Nugget wählen, sodass der Gewichtsunterschied nicht zu groß ist.
-  Angenommen die rote Truhe mit Gewicht $r_{2019}$ ist leichter oder gleich
-  schwer wie die Blaue vor der Vergabe des letzten Nuggets, dann wird Leo die
-  rote Truhe wählen und Smilla wird das Nugget $n_{2020}$ in diese Truhe legen.
-  Daraus folgt mit~\eqref{sec1:equation1}:
-
+  Da Smilla sich am Schluss ihre Truhe aussuchen darf und daher die schwerere
+  Truhe bekommt, wodurch Leo die Leichter bekommt, wird Leo versuchen die Truhen
+  so gleichmäßig wie möglich zu füllen. Also wird Leo logischerweise die
+  leichtere Truhe für das letzte Nugget wählen, sodass der letztendliche
+  Gewichtsunterschied möglichst klein ist. Sind die Truhen gleich schwer so ist
+  es unerheblich für Leo, welche Truhe er wählt. Angenommen die rote Truhe mit
+  Gewicht $r_{2019}$ ist leichter oder gleich schwer wie die Blaue vor der
+  Vergabe des letzten Nuggets (Die Farben sind austauschbar), dann wird Leo die
+  rote Truhe wählen und Smilla wird das letzte Nugget $n_{2020}$ in diese Truhe
+  legen. Daraus folgt mit~\eqref{sec1:equation1}:
   \begin{equation}\label{sec1:equation2}
-    r_{2020}=r_{2019}+n_{2020}=1010\cdot2021-b_{2019}
+    r_{2020}=r_{2019}+n_{2020}=(1010\cdot2021-b_{2019}-n_{2020})+n_{2020}=1010\cdot2021-b_{2019}
   \end{equation}
-
-  Also ist $r_{2020}$ maximal groß, wenn $b_{2019}$ minimal groß ist. Da
-  $b_{2019}$ größer gleich $r_{2019}$ sein muss, ist der minimale Wert für
-  $b_{2019}$ $r_{2019}$. Daraus folgt mit~\eqref{sec1:equation1}:
-
+  Also hat $r_{2020}$ den maximalen Wert, wenn $b_{2019}$ minimal ist. Da
+  $b_{2019}$ größer gleich $r_{2019}$ sein muss, ist der minimale Wert von
+  $b_{2019}$ also $r_{2019}$. Im Idealfall folgt daher
+  mit~\eqref{sec1:equation1}:
   \begin{equation}\label{sec1:equation3}
     \begin{split}
-      2r_{2019} &= 2b_{2019} =1010\cdot2021-n_{2020}\\
-      \Rightarrow r_{2019} &= b_{2019}=5050\cdot2021-\dfrac{n_{2020}}{2}
+      2b_{2019} &= 2r_{2019} =1010\cdot2021-n_{2020}\\
+      \Rightarrow b_{2019} &= r_{2019}=5050\cdot2021-\dfrac{n_{2020}}{2}
     \end{split}
   \end{equation}
-
   Wird~\eqref{sec1:equation3} in \eqref{sec1:equation2} eingesetzt:
-
   \begin{equation*}
     r_{2020}=5050\cdot2021+\dfrac{n_{2020}}{2}
   \end{equation*}
-
   Im Idealfall für Smilla ist $n_{2020}$ maximal groß und hat daher den Wert
   2020. Damit gilt für die Obergrenze $r_{2020}$:
-
   \begin{equation*}
     r_{2020}=5050\cdot2021+1010
   \end{equation*}
-
   Nun stellt sich die Frage, ob Smilla diese Obergrenze überhaupt erreichen
-  kann.
+  kann. Eine Strategie für Smilla um mindestens die Obergrenze zu erreichen ist Folgende:\\
 
-  Eine Strategie für Smilla um mindestens die Obergrenze zu erreichen ist Folgende:\\
-  Smilla trennt alle Nuggets bis auf 2020 nach in zwei gleich schwere Gruppen.
+  Smilla trennt alle Nuggets bis auf $2020$ nach in zwei gleich schwere Gruppen.
   Das ist möglich, da $2019$ gleich $4\cdot504 + 3$ ist,
-  weshalb~\autoref{sec1:zahlengruppen} anwendbar ist. Jede Gruppe steht dabei
-  für eine Truhe. Wählt nun Leo eine Truhe aus, so legt Smilla ein Nugget aus
-  der entsprechenden Gruppe hinein. Das funktioniert solange, bis alle Nuggets
-  einer Gruppe in der entsprechenden Truhe sind und Leo wieder diese Truhe
-  auswählt. In diesem Fall legt Smilla das Nugget 2020 in diese Truhe, womit die
-  Obergrenze erreicht ist. Der einzige andere mögliche Fall ist, dass Leo beide
-  Truhen genauso oft auswählt, wie viele Nuggets in der entsprechenden Gruppe
-  sind, sodass nur das Nugget 2020 übrigbleibt. Leo kann nun egal welche Truhe
-  auswählen und diese Truhe wird exakt den Wert der Obergrenze erhalten.
+  weshalb~\autoref{sec1:zahlengruppen} anwendbar ist. Die Gruppen entsprechen
+  dabei den Truhen. Wählt nun Leo eine Truhe aus, so legt Smilla ein Nugget aus
+  der entsprechenden Gruppe hinein. Wählt Leo irgendwann eine Truhe aus, in
+  welcher schon alle Nuggets der entsprechenden Gruppe sind, so legt Smilla das
+  Nugget 2020 in diese Truhe, womit die Obergrenze erreicht ist. erhalten.
 \end{proof}
 \begin{proof thm}{\autoref{sec1:Zahlensumme}}
   \begin{align*}
@@ -165,10 +158,11 @@
   Die Zahlenreihe wird um Null erweitert, sodass die Reihe aus insgesamt
   $n+1=4(k+1)$ Zahlen besteht. Nun wird die Zahlenfolge in der Mitte „gefaltet“.
   Die kleinste Zahl wird mit der Größten gepaart, die zweit Kleinste mit der
-  zweit Größten, etc. So enstehen $\frac{4(k+1)}{2}=2(k+1)$ Paare, mit einer
-  Summe von $(j)+(n-j) = n+1$. Da die Paare alle gleich groß sind und eine
+  zweit Größten, etc. So enstehen $\frac{4(k+1)}{2}=2(k+1)$ Paare, jeweils mit
+  einer Summe von $(j)+(n-j) = n+1$. Da die Paare alle gleich groß sind und eine
   gerade Anzahl haben, können sie in zwei gleich große Gruppen unterteilt
-  werden.
+  werden. Dabei kann nun die Null wieder entfernt werden, schließlich verändert
+  sie die Summen der Gruppen nicht.
 \end{proof thm}
 
 \newpage
@@ -177,35 +171,41 @@
   $x + y + z = 100$.
 \end{aufgabe}
 \begin{lemma}\label{sec2:rational1}
-  Der Quotient $\frac{a}{b}$ zweier rationaler Zahlen $a,b$ mit $\mathbb{Q}\backslash\{0\}$ ist rational definiert.\\
+  Jeder Quotient $\frac{a}{b}$ zweier rationaler Zahlen $a,b∈ℚ\backslash\{0\}$
+  ist rational definiert.
 \end{lemma}
 \begin{lemma}\label{sec2:rational2}
-  Das Produkt $ ab $ einer rationalen Zahl $a$ mit $\mathbb{Q}\backslash\{0\}$
-  und einer irrationalen Zahl $b$ ist immer eine irrationale Zahl.
+  Jedes Produkt $ ab $ einer rationalen Zahl $a$ ungleich Null und einer
+  irrationalen Zahl $b$ ist immer eine irrationale Zahl.
 \end{lemma}
 \begin{proof}
-  Zuerst wird $z = -(x+y)$ in $x^2+y^2+z^2 = 100$ eingesetzt. Also gilt
-  $(-(x+y))^2+x^2+y^2 = 100 \Rightarrow x^2+xy+y^2=50$.\\
+  Zuerst wird $x+y+z = 0 \Rightarrow z = -(x+y)$ in $x^2+y^2+z^2 = 100$
+  eingesetzt. Also gilt:
+  \begin{equation}
+    \label{eq:1}
+    x^2+y^2+(-(x+y))^2 = 100 \Rightarrow x^2+xy+y^2=50
+  \end{equation}
   Hieraus folgt direkt, dass $x$ und $y$ nicht gleich Null sein können. Sind sie
   beide Null, so gilt: $0^2+0\cdot0+0^2=0\neq50$. Ist nur eine der Variablen
   Null so gilt: $0^2+0\cdot a+a^2=a^2=50\Rightarrow a = \pm5\sqrt{2}$. a kann
   dabei durch x oder y substituiert werden. Da $\sqrt{2}$ irrational ist, ist
-  auch dieser Fall nicht möglich. Durch teilen durch $x^2$ erhält
+  nach~\autoref{sec2:rational1} auch dieser Fall nicht möglich, sonst wäre
+  $a$ schließlich irrational.
+
+  Durch teilen von~\eqref{eq:1} durch $x^2$ entsteht
   $(\frac{y}{x})^2+\frac{y}{x}+1=\frac{50}{x^2}$. Das Teilen durch $x^2$ ist
-  erlaubt, da $x$ nicht Null sein kann. Nun wird nach x aufgelöst:
-  \[x=\pm\sqrt{\dfrac{50}{(\frac{y}{x})^2+\frac{y}{x}+1}}\] Aus dem Hilfssatz
-  folgt, dass $\frac{y}{x}$ als eine gekürzte rationale Zahl $\frac{m}{n}$ mit
+  erlaubt, da $x$ nicht Null sein kann. Nun wird nach $x$ aufgelöst:
+  \[x=\pm\sqrt{\dfrac{50}{(\frac{y}{x})^2+\frac{y}{x}+1}}\] Aus~\autoref{sec2:rational2} folgt, dass $\frac{y}{x}$ als eine gekürzte rationale Zahl $\frac{m}{n}$ mit
   $m,n\in\mathbb{Z}\backslash\{0\}$, wobei $m$ und $n$ teilerfremd sind,
   beschreibbar sein muss. Daraus folgt:
-  \[x=\pm\sqrt{\dfrac{50n^2}{m^2+m n+n^2}}= \pm5\abs{n}\sqrt{\dfrac{2}{m^2+m
-        n+n^2}}\]
-
-  Wegen~\autoref{sec2:rational2} darf die Wurzel nicht irrational sein. Damit
-  das Radikal rational definiert ist, muss der Radiant eine gerade 2er Potenz
-  haben($2^{2k}$). Da der Zähler mit $2^1$ eine ungerade Anzahl hat, muss auch
-  der Nenner eine ungerade 2er Potenz haben. Damit der Nenner überhaupt durch
-  zwei teilbar ist(womit er eine gerade 2er Potenz von $2^0$ hätte), müssen $m$
-  und $n$ gerade Zahlen sein, denn es gilt:
+  \[x=\pm\sqrt{\dfrac{50}{(\frac{m}{n})^2+\frac{m}{n}+1}}=\pm\sqrt{\dfrac{(2\cdot5^2)n^2}{m^2+m n+n^2}}=
+    \pm5\abs{n}\sqrt{\dfrac{2}{m^2+m n+n^2}}\] Da $5\abs{n}$ eine ganze Zahl
+  sein ist, darf wegen~\autoref{sec2:rational2} die Wurzel nicht irrational sein. Damit das Radikal rational definiert
+  ist, muss der Radiant eine gerade 2er Potenz haben($2^{2k}$). Da der Zähler
+  mit $2^1$ eine ungerade Anzahl hat, muss auch der Nenner eine ungerade 2er
+  Potenz haben. Damit der Nenner überhaupt durch zwei teilbar ist(womit er eine
+  gerade 2er Potenz von $2^0$ hätte), müssen $m$ und $n$ gerade Zahlen sein,
+  denn es gilt:
   \begin{itemize}
   \item Sind $m$ und $n$ beide ungerade:
     \[m^2+mn+n^2\mod{2}=1^2+1\cdot1+1^2\mod{2}=1\mod{2}\] Also ist in diesem
@@ -223,17 +223,19 @@
   unmöglich, dass $x$ rational ist.
 \end{proof}
 \begin{proof thm}{\autoref{sec2:rational1}}
-  Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch $\frac{m_b}{n_b}$ ersetzt,
+  Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch $\frac{m_b}{n_b}$ beschrieben,
   wobei $m_a,n_a,m_b,n_b\inℕ\backslash\{0\}$ gilt, so kann der Quotient
   $\frac{a}{b}$ als $\frac{\frac{m_a}{n_a}}{\frac{m_b}{n_b}}=\frac{m_a\cdot
     n_b}{m_b\cdot n_a}$ geschrieben werden. Da $m_a\cdot n_b$ und $m_b\cdot n_a$
-  beide ganze Zahlen ungleich Null sind, muss der Quotient rational sein.
+  ganze Zahlen ungleich Null sind, muss der Quotient rational sein.
 \end{proof thm}
 \begin{proof thm}{\autoref{sec2:rational2}}
   Beweis durch Widerspruch: Angenommen das Produkt $c$ ist eine rationale Zahl:
-  \[ab=c \Rightarrow b =\frac{c}{a}\] Die rechte Seite muss
-  nach~\autoref{sec2:rational1} rational sein, also darf $b$ nicht irrational
-  sein.
+  \begin{equation*}
+    ab=c \Rightarrow b =\frac{c}{a}
+  \end{equation*}
+  Die rechte Seite muss nach~\autoref{sec2:rational1} rational sein, also darf
+  $b$ nicht irrational sein.
 \end{proof thm}
 
 \newpage
@@ -298,7 +300,7 @@
 \end{proof thm}
 \begin{proof thm}{\autoref{sec3:lemma2}}
   Die Höhen werden nach den Seiten auf welchen sie stehen, $h_a$ und $h_b$
-  genannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdot x}{2}$
+  genannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdotx}{2}$
   berechnet werden. Dabei ist $x$ eine beliebige Seite. Also gilt:
   \begin{equation}\label{sec3:equation1}
     \dfrac{h_a\cdot a}{2}=A=\dfrac{h_b\cdot b}{2}
