@@ -43,7 +43,7 @@
 }{%
 \popQED\endtrivlist\@endpefalse
 }
-\newenvironment{proof thm}[1]{
+\newenvironment{proof_thm}[1]{
 \begin{proof}[\proofname~(#1)]}{\end{proof}}
 \makeatother
 
@@ -147,14 +147,14 @@
   welcher schon alle Nuggets der entsprechenden Gruppe sind, so legt Smilla das
   Nugget 2020 in diese Truhe, womit die Obergrenze erreicht ist. erhalten.
 \end{proof}
-\begin{proof thm}{\autoref{sec1:Zahlensumme}}
+\begin{proof_thm}{\autoref{sec1:Zahlensumme}}
   \begin{align*}
     \sum^{n}_{k=1}k&=\dfrac{1}{2}\cdot\left( \sum^{n}_{k=1}k +
                      \sum^{n}_{k=1}(n+1-k)\right) = \dfrac{1}{2}\cdot\sum^{n}_{k=1}(k+(n+1-k))\\
                    &=\dfrac{1}{2}\cdot\sum^{n}_{k=1}(n+1) = \dfrac{n(n+1)}{2}
   \end{align*}
-\end{proof thm}
-\begin{proof thm}{\autoref{sec1:zahlengruppen}}
+\end{proof_thm}
+\begin{proof_thm}{\autoref{sec1:zahlengruppen}}
   Die Zahlenreihe wird um Null erweitert, sodass die Reihe aus insgesamt
   $n+1=4(k+1)$ Zahlen besteht. Nun wird die Zahlenfolge in der Mitte „gefaltet“.
   Die kleinste Zahl wird mit der Größten gepaart, die zweit Kleinste mit der
@@ -163,7 +163,7 @@
   gerade Anzahl haben, können sie in zwei gleich große Gruppen unterteilt
   werden. Dabei kann nun die Null wieder entfernt werden, schließlich verändert
   sie die Summen der Gruppen nicht.
-\end{proof thm}
+\end{proof_thm}
 
 \newpage
 \begin{aufgabe}
@@ -189,69 +189,84 @@
   beide Null, so gilt: $0^2+0\cdot0+0^2=0\neq50$. Ist nur eine der Variablen
   Null so gilt: $0^2+0\cdot a+a^2=a^2=50\Rightarrow a = \pm5\sqrt{2}$. a kann
   dabei durch x oder y substituiert werden. Da $\sqrt{2}$ irrational ist, ist
-  nach~\autoref{sec2:rational1} auch dieser Fall nicht möglich, sonst wäre
-  $a$ schließlich irrational.
+  nach~\autoref{sec2:rational1} auch dieser Fall nicht möglich, sonst wäre $a$
+  schließlich irrational.
 
-  Durch teilen von~\eqref{eq:1} durch $x^2$ entsteht
+  Durch Teilen von~\eqref{eq:1} durch $x^2$ entsteht
   $(\frac{y}{x})^2+\frac{y}{x}+1=\frac{50}{x^2}$. Das Teilen durch $x^2$ ist
-  erlaubt, da $x$ nicht Null sein kann. Nun wird nach $x$ aufgelöst:
-  \[x=\pm\sqrt{\dfrac{50}{(\frac{y}{x})^2+\frac{y}{x}+1}}\] Aus~\autoref{sec2:rational2} folgt, dass $\frac{y}{x}$ als eine gekürzte rationale Zahl $\frac{m}{n}$ mit
-  $m,n\in\mathbb{Z}\backslash\{0\}$, wobei $m$ und $n$ teilerfremd sind,
-  beschreibbar sein muss. Daraus folgt:
-  \[x=\pm\sqrt{\dfrac{50}{(\frac{m}{n})^2+\frac{m}{n}+1}}=\pm\sqrt{\dfrac{(2\cdot5^2)n^2}{m^2+m n+n^2}}=
-    \pm5\abs{n}\sqrt{\dfrac{2}{m^2+m n+n^2}}\] Da $5\abs{n}$ eine ganze Zahl
-  sein ist, darf wegen~\autoref{sec2:rational2} die Wurzel nicht irrational sein. Damit das Radikal rational definiert
-  ist, muss der Radiant eine gerade 2er Potenz haben($2^{2k}$). Da der Zähler
-  mit $2^1$ eine ungerade Anzahl hat, muss auch der Nenner eine ungerade 2er
-  Potenz haben. Damit der Nenner überhaupt durch zwei teilbar ist(womit er eine
-  gerade 2er Potenz von $2^0$ hätte), müssen $m$ und $n$ gerade Zahlen sein,
-  denn es gilt:
-  \begin{itemize}
-  \item Sind $m$ und $n$ beide ungerade:
-    \[m^2+mn+n^2\mod{2}=1^2+1\cdot1+1^2\mod{2}=1\mod{2}\] Also ist in diesem
-    Fall der Nenner ungerade.
-  \item Ist $m$ gerade und $n$ ungerade:
-    \[m^2+mn+n^2\mod{2}=0^2+0\cdot1+1^2\mod{2}=1\mod{2}\] Auch hier ist wird der
-    Nenner ungerade.
-  \item Da der Nenner symmetrisch in Rücksicht auf $m$ und $n$ ist, gilt im Fall
-    \[m^2+mn+n^2\mod{2}=0^2+0\cdot0+0^2\mod{2}=0\mod{2}\]
+  erlaubt, da $x$ nicht Null sein kann.
+  
+  Aus~\autoref{sec2:rational2} folgt, dass $q=\frac{y}{x}$ als eine gekürzte
+  rationale Zahl $\frac{m_q}{n_q}$ mit $m_q,n_q\in\mathbb{Z}\backslash\{0\}$,
+  wobei $m_q$ und $n_q$ teilerfremd sind, beschreibbar sein muss. Auch $x$ muss
+  als rationale Zahl $\dfrac{m_x}{n_x}$, mit
+  $m_x,n_q\in\mathbb{Z}\backslash\{0\}$, wobei $m_x$ und $n_x$ teilerfremd sind.
+  Also kann die Gleichung umgeschrieben werden:
+  \begin{equation}
+    \label{eq:2}
+    \begin{split}
+      \left(\dfrac{m_q}{n_q}\right)^2+\dfrac{m_q}{n_q}+1&=\dfrac{50}{\left(\frac{m_x}{n_x}\right)^2}=2\dfrac{5n_x^2}{m_x^2}\\
+      \Rightarrow \dfrac{m_q^2+m_q\cdot n_q +
+        n_q^2}{2}&=\dfrac{5^2n_x^2n_q^2}{m_x^2}=\left( \dfrac{5n_xn_q}{m_q}
+      \right)
+    \end{split}
+  \end{equation}
+  Da die rechte Seite von~\eqref{eq:2} das Quadrat einer rationalen Zahl ist,
+  gilt dies auch für $\frac{m_q^2+m_q\cdot n_q + n_q^2}{2}$. Da Qudrate von
+  rationalen Zahlen immer eine gerade Anzahl ihrer Primfaktoren haben, muss das
+  auch für $2$ gelten. Daher wird zwischen drei Fällen unterschieden:
+  \begin{itemize}[itemsep=2ex]
+  \item Sind $m_q$ und $n_q$ beide ungerade:
+    \[m_q^2+m_qn_q+n_q^2\equiv1^2+1\cdot1+1^2\equiv1\pmod{2}\] Also ist in
+    diesem Fall der Zähler ungerade. Damit der Nenner der linken Seite
+    von~\eqref{eq:2} die ungerade Anzahl $2^{-1}$vom Primfaktor 2, womit die
+    linke Seite kein Qudrat einer rationalen Zahl sein kann. Es gibt einen
+    Widerspruch.
+  \item Sind $m_q$ gerade und $n_q$ ungerade:
+    \[m_q^2+m_qn_q+n_q^2\equiv0^2+0\cdot1+1^2\equiv1\pmod{2}\] Auch hier ist
+    wird der Zähler ungerade, womit gleiches wie im vorherigen Fall gilt.
+  \item Da der Zähler symmetrisch in Rücksicht auf $m_q$ und $n_q$ ist, gilt
+    wenn $m_q$ ungerade und $n_q$ gerade ist, gleiches wie im vorher gehenden
+    Fall.
+  \item Es können nicht beide Variablen gerade sein, da sie teilerfremd sein
+    müssen.
   \end{itemize}
-  Doch wenn $m$ und $n$ gerade sind, haben sie einen gemeinsamen Teiler 2, was
-  im Gegensatz zur Teilerfremdheit von $m$ und $n$ steht. Damit kann $x$ keine
-  rationale Zahl sein, wenn $\frac{y}{x}$ eine rationale Zahl ist. Diese
-  wiederum muss eine rationale Zahl sein, wenn $x$ eine ist. Damit ist es
-  unmöglich, dass $x$ rational ist.
+  Damit kann $\frac{y}{x}$ keine rationale Zahl sein, wenn $x$ eine rationale
+  Zahl ist. Doch gleichzeitig folgt aus~\autoref{sec2:rational1}, dass
+  $\frac{y}{x}$ eine rationale Zahl sein muss, wenn $x$ und $y$ rational sind.
+  Also können $x$ und $y$ nicht gleichzeitig rational sein.
 \end{proof}
-\begin{proof thm}{\autoref{sec2:rational1}}
+\begin{proof_thm}{\autoref{sec2:rational1}}
   Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch $\frac{m_b}{n_b}$ beschrieben,
   wobei $m_a,n_a,m_b,n_b\inℕ\backslash\{0\}$ gilt, so kann der Quotient
   $\frac{a}{b}$ als $\frac{\frac{m_a}{n_a}}{\frac{m_b}{n_b}}=\frac{m_a\cdot
     n_b}{m_b\cdot n_a}$ geschrieben werden. Da $m_a\cdot n_b$ und $m_b\cdot n_a$
   ganze Zahlen ungleich Null sind, muss der Quotient rational sein.
-\end{proof thm}
-\begin{proof thm}{\autoref{sec2:rational2}}
+\end{proof_thm}
+\begin{proof_thm}{\autoref{sec2:rational2}}
   Beweis durch Widerspruch: Angenommen das Produkt $c$ ist eine rationale Zahl:
   \begin{equation*}
     ab=c \Rightarrow b =\frac{c}{a}
   \end{equation*}
   Die rechte Seite muss nach~\autoref{sec2:rational1} rational sein, also darf
   $b$ nicht irrational sein.
-\end{proof thm}
+\end{proof_thm}
 
 \newpage
 \begin{aufgabe}
-  Zwei Geraden m und n schneiden sich in genau einem Punkt P. Ein Punkt M bewegt
-  sich auf m mit konstanter Geschwindigkeit, ein weiterer Punkt N bewegt sich
-  auf n mit derselben Geschwindigkeit; dabei passieren sie beide den Punkt P,
-  aber nicht gleichzeitig.
+  Zwei Geraden $m$ und $n$ schneiden sich in genau einem Punkt $P$. Ein Punkt
+  $M$ bewegt sich auf m mit konstanter Geschwindigkeit, ein weiterer Punkt $N$
+  bewegt sich auf $n$ mit derselben Geschwindigkeit; dabei passieren sie beide
+  den Punkt $P$, aber nicht gleichzeitig.
  
-  Beweise: Es gibt einen festen, von P verschiedenen Punkt Q so, dass die Punkte
-  P, Q, M und N zu jedem Zeitpunkt auf einem gemeinsamen Kreis liegen.\\
+  Beweise: Es gibt einen festen, von $P$ verschiedenen Punkt $Q$ so, dass die
+  Punkte
+  $P$, $Q$, $M$ und $N$ zu jedem Zeitpunkt auf einem gemeinsamen Kreis liegen.\\
 \end{aufgabe}
 \begin{lemma}\label{sec3:lemma1}
-  Bewegt sich der Mittelpunkt m eines Kreises K auf der Geraden g, wobei der
-  feste Punkt R konstant auf K, aber nicht auf g liegt, so muss ein zweiter
-  fester Punkt S existieren, welcher konstant auf K liegt.
+  Bewegt sich der Mittelpunkt $m$ eines Kreises $K$ auf der Geraden $g$, wobei
+  der feste Punkt $R$ konstant auf $K$, aber nicht auf $g$ liegt, so muss ein
+  zweiter fester Punkt $S$ existieren, welcher konstant auf $K$ liegt.
 \end{lemma}
 \begin{lemma}\label{sec3:lemma2}
   Sind in einem Dreieck zwei Höhen gleich, so muss das Dreieck gleichschenklig
@@ -259,15 +274,15 @@
   Dreiecks.
 \end{lemma}
 \begin{proof}
-  Angenommen M ist der Punkt, welcher zuerst P passiert. Dann ist der Abstand
-  den M zu P hat, wenn N P passiert a. Den Abstand von P zu N wird
-  $x(t)=v\cdot{}t$ genannt. Der Winkel zwischen M und N bekommt die Variable α
-  zugewiesen.
+  Angenommen $M$ ist der Punkt, welcher zuerst $P$ passiert. Dann ist der
+  Abstand den $M$ zu $P$ hat, wenn $N$ $P$ passiert $a$. Den Abstand von $P$ zu
+  $N$ wird $x(t)=v\cdot{}t$ genannt. Der Winkel zwischen $M$ und $N$ bekommt die
+  Variable $α$ zugewiesen.
 
-  Nun wird die Position des Mittelpunkts U des Umkreises von PMN in Abhängigkeit
-  von $x$ bestimmt. Bewegt sich $U$ auf einer Geraden, so muss
-  nach~\autoref{sec3:lemma1} ein weiterer Punkt außer P existieren, welcher für
-  alle $x$ auf dem Kreis liegt.
+  Nun wird die Position des Mittelpunkts $U$ des Umkreises von $PMN$ in
+  Abhängigkeit von $x$ bestimmt. Bewegt sich $U$ auf einer Geraden, so muss
+  nach~\autoref{sec3:lemma1} ein weiterer Punkt außer $P$ existieren, welcher
+  für alle $x$ auf dem Kreis liegt.
 
   Der Umkreismittelpunkt einer Dreiecks wird durch den Schnittpunkt der
   Mittelsenkrechten der Dreiecksseiten bestimmt. Also wird $m_0$ mit $x=0$ und
@@ -278,37 +293,37 @@
 
   Dreieck $PRL_{N_{x}}$ ist zu Dreieck $L_{M_0}RS$ ähnlich, da sie beide einen
   rechten Winkel haben und einen Winkel bei $R$ teilen. Also hat $\angle
-  L_{M_0}SR$ genauso wie $\angle RPL_{N_x}$ den Wert α.\\
+  L_{M_0}SR$ genauso wie $\angle RPL_{N_x}$ den Wert $α$.\\
   Da in Dreieck $U_0U_xS$ die Höhen auf $[U_xS]$ und $[SU_0]$ gleichlang sind
   (TODO), ist das Dreieck nach~\autoref{sec3:lemma2} gleichschenklig. Also kann
   der Wert des Winkels $\angle U_xU_0S$ über die Winkelsumme im
   gleichschenkligen Dreieck bestimmt werden:
-  \[180° = α + \measuredangle U_xU_0S + \measuredangle SU_xU_0 \Rightarrow
-    \measuredangle U_xU_0S = 90°-\dfrac{α}{2} \] Die Gerade $(U_0;U_x)$ ist also
-  eine Rotation von $(M_0;S)$ an $U_0$ um einen Winkel von $90°-\dfrac{α}{2}$ im
-  Uhrzeigersinn. Da alle dieser geometrischen Objekte unabhängig von $x$ sind,
-  ist die Gerade $(U_0;U_x)$ es auch. Also liegen alle U auf einer Geraden.
-  Weshalb es einen zweiten festen Punkt geben muss, welcher auf dem gleichen
-  Kreis wie P, M und N liegt.
+  \[180° = α + \angle U_xU_0S + \angle SU_xU_0 \Rightarrow \angle U_xU_0S =
+    90°-\dfrac{α}{2} \] Die Gerade $(U_0;U_x)$ ist also eine Rotation von
+  $(M_0;S)$ an $U_0$ um einen Winkel von $90°-\dfrac{α}{2}$ im Uhrzeigersinn. Da
+  alle dieser geometrischen Objekte unabhängig von $x$ sind, ist die Gerade
+  $(U_0;U_x)$ es auch. Also liegen alle $U$ auf einer Geraden. Weshalb es einen
+  zweiten festen Punkt geben muss, welcher auf dem gleichen Kreis wie $P$, $M$
+  und $N$ liegt.
 \end{proof}
-\begin{proof thm}{\autoref{sec3:lemma1}}
-  Die achsensymmetrische Spiegelung von R an g ist S. Denn daraus folgt, dass g
-  die Mittelsenkrechte von $[RS]$ ist. Da ein Punkt auf einer Mittelsenkrechten
-  die Enden der Strecke, welche die Mittelsenkrechte teilt, gleich weit entfernt
-  ist, müssen auch $R$ und $S$ gleich weit von m entfernt sein. Liegt $R$ also
-  auf dem Kreis $K$ um m, so muss gleiches für S gelten.
-\end{proof thm}
-\begin{proof thm}{\autoref{sec3:lemma2}}
+\begin{proof_thm}{\autoref{sec3:lemma1}}
+  Die achsensymmetrische Spiegelung von $R$ an $g$ ist $S$. Denn daraus folgt,
+  dass $g$ die Mittelsenkrechte von $[RS]$ ist. Da ein Punkt auf einer
+  Mittelsenkrechten die Enden der Strecke, welche die Mittelsenkrechte teilt,
+  gleich weit entfernt ist, müssen auch $R$ und $S$ gleich weit von m entfernt
+  sein. Liegt $R$ also auf dem Kreis $K$ um m, so muss gleiches für $S$ gelten.
+\end{proof_thm}
+\begin{proof_thm}{\autoref{sec3:lemma2}}
   Die Höhen werden nach den Seiten auf welchen sie stehen, $h_a$ und $h_b$
-  genannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdotx}{2}$
-  berechnet werden. Dabei ist $x$ eine beliebige Seite. Also gilt:
+  genannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdot
+    x}{2}$ berechnet werden. Dabei ist $x$ eine beliebige Seite. Also gilt:
   \begin{equation}\label{sec3:equation1}
     \dfrac{h_a\cdot a}{2}=A=\dfrac{h_b\cdot b}{2}
   \end{equation}
   Sind $h_a$ und $h_b$ gleich groß, so kann~\eqref{sec3:equation1} zu $a=b$
   gekürzt werden. Also hat das Dreieck zwei gleichlange Seiten. Es ist
   gleichschenklig.
-\end{proof thm}
+\end{proof_thm}
 
 \newpage
 \begin{aufgabe}
