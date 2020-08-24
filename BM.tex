@@ -2,11 +2,11 @@
 \documentclass[10pt, a4paper]{amsart}
 \usepackage[utf8x]{inputenc}
 \usepackage{polyglossia}
-\setdefaultlanguage{german}
-\usepackage{fontspec}
-\usepackage{fontenc}
-\usepackage{lastpage}
+\setdefaultlanguage{ngerman}
 \usepackage{enumitem}
+\usepackage{caption}
+\captionsetup[figure]{name=Abbildung}
+\usepackage{tkz-euclide}
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{amsthm, thmtools}
 \declaretheorem[name=Aufgabe, thmbox = L]{aufgabe}
@@ -29,10 +29,7 @@
   xetex
 ]{geometry}
 \usepackage{unicode-math}
-\makeatletter
-\newcommand*{\currentname}{\@currentlabelname}
-\makeatother
-
+\listfiles
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
 \pushQED{\qed}%
@@ -54,7 +51,7 @@
 	\fontsize{9}{7}Valentin Herrmann}
 
 %hyperref must be the last package in the preamble
-\usepackage[]{hyperref}
+\usepackage{hyperref}
 \hypersetup{
 	bookmarks=true,
 	unicode=true,
@@ -66,6 +63,7 @@
 	linkcolor=black,
 	linktoc=all
 }
+\renewcommand{\figureautorefname}{Abbildung}
 
 \begin{document}
 \thispagestyle{fancy}
@@ -84,7 +82,7 @@
   garantieren?
 \end{aufgabe}
 \begin{lemma}\label{sec1:Zahlensumme}
-  Es gilt für alle $n\in\mathbb{N}$:
+  Es gilt für alle $n∈ℕ^*$:
   \[ \sum^{n}_{k=1}k=\dfrac{n(n+1)}{2}\]
 \end{lemma}
 \begin{lemma}
@@ -222,13 +220,13 @@
     von~\eqref{eq:2} die ungerade Anzahl $2^{-1}$vom Primfaktor 2, womit die
     linke Seite kein Qudrat einer rationalen Zahl sein kann. Es gibt einen
     Widerspruch.
-  \item Sind $m_q$ gerade und $n_q$ ungerade:
+  \item Ist $m_q$ gerade und $n_q$ ungerade:
     \[m_q^2+m_qn_q+n_q^2\equiv0^2+0\cdot1+1^2\equiv1\pmod{2}\] Auch hier ist
     wird der Zähler ungerade, womit gleiches wie im vorherigen Fall gilt.
   \item Da der Zähler symmetrisch in Rücksicht auf $m_q$ und $n_q$ ist, gilt
     wenn $m_q$ ungerade und $n_q$ gerade ist, gleiches wie im vorher gehenden
     Fall.
-  \item Es können nicht beide Variablen gerade sein, da sie teilerfremd sein
+  \item Es können nicht beide Variablen gerade sein, da sie nach Definition teilerfremd sein
     müssen.
   \end{itemize}
   Damit kann $\frac{y}{x}$ keine rationale Zahl sein, wenn $x$ eine rationale
@@ -238,10 +236,10 @@
 \end{proof}
 \begin{proof_thm}{\autoref{sec2:rational1}}
   Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch $\frac{m_b}{n_b}$ beschrieben,
-  wobei $m_a,n_a,m_b,n_b\inℕ\backslash\{0\}$ gilt, so kann der Quotient
-  $\frac{a}{b}$ als $\frac{\frac{m_a}{n_a}}{\frac{m_b}{n_b}}=\frac{m_a\cdot
-    n_b}{m_b\cdot n_a}$ geschrieben werden. Da $m_a\cdot n_b$ und $m_b\cdot n_a$
-  ganze Zahlen ungleich Null sind, muss der Quotient rational sein.
+  wobei $m_a,n_a,m_b,n_b\inℕ^*$ gilt, so kann der Quotient $\frac{a}{b}$ als
+  $\frac{\frac{m_a}{n_a}}{\frac{m_b}{n_b}}=\frac{m_a\cdot n_b}{m_b\cdot n_a}$
+  geschrieben werden. Da $m_a\cdot n_b$ und $m_b\cdot n_a$ ganze Zahlen ungleich
+  Null sind, muss der Quotient rational sein.
 \end{proof_thm}
 \begin{proof_thm}{\autoref{sec2:rational2}}
   Beweis durch Widerspruch: Angenommen das Produkt $c$ ist eine rationale Zahl:
@@ -264,9 +262,9 @@
   $P$, $Q$, $M$ und $N$ zu jedem Zeitpunkt auf einem gemeinsamen Kreis liegen.\\
 \end{aufgabe}
 \begin{lemma}\label{sec3:lemma1}
-  Bewegt sich der Mittelpunkt $m$ eines Kreises $K$ auf der Geraden $g$, wobei
-  der feste Punkt $R$ konstant auf $K$, aber nicht auf $g$ liegt, so muss ein
-  zweiter fester Punkt $S$ existieren, welcher konstant auf $K$ liegt.
+  Für alle festen, veschiedenen Punkte $P$ und $Q$, existiert eine Gerade $g$, sodass
+  genau dann wenn der Mittelpunkt $M$ eines Kreises $k$ auf $g$ und $P$ auf $k$
+  liegt, auch $Q$ auf dem Kreis liegt.
 \end{lemma}
 \begin{lemma}\label{sec3:lemma2}
   Sind in einem Dreieck zwei Höhen gleich, so muss das Dreieck gleichschenklig
@@ -274,23 +272,90 @@
   Dreiecks.
 \end{lemma}
 \begin{proof}
-  Angenommen $M$ ist der Punkt, welcher zuerst $P$ passiert. Dann ist der
-  Abstand den $M$ zu $P$ hat, wenn $N$ $P$ passiert $a$. Den Abstand von $P$ zu
-  $N$ wird $x(t)=v\cdot{}t$ genannt. Der Winkel zwischen $M$ und $N$ bekommt die
-  Variable $α$ zugewiesen.
+  Zuerst wird die Position des Umkreismittelpunkts $U$ von $PMN$ in Abhängigkeit
+  der Zeit $t$ bestimmt. Denn nur exakt dann wenn alle $U$ auf einer Geraden
+  liegen, existiert nach~\autoref{sec3:lemma1} ein weiterer Punkt außer $P$,
+  welcher für alle verschiedenen $U$ auf dem Kreis liegt.
 
-  Nun wird die Position des Mittelpunkts $U$ des Umkreises von $PMN$ in
-  Abhängigkeit von $x$ bestimmt. Bewegt sich $U$ auf einer Geraden, so muss
-  nach~\autoref{sec3:lemma1} ein weiterer Punkt außer $P$ existieren, welcher
-  für alle $x$ auf dem Kreis liegt.
+  Um das zu beweisen werden nun alle $U_t$
+  mit einem $U_0$ verglichen. Der Umkreismittelpunkt eines Dreiecks wird durch
+  den Schnittpunkt der Mittelsenkrechten der Dreiecksseiten bestimmt. Zwei
+  Mittelsenkrechten reichen dabei aus:
+  
+  \begin{figure}[h]
+    \centering
+      \begin{tikzpicture}[rotate=70,scale=1.5]
+        % \tkzSetUpLine[add=.5 and .5]%
+        \tkzSetUpPoint[fill=black]%
+    
+        \def\vara{75} \def\varx{1}%
+    
+        \tkzDefPoint(0,0){P} \tkzDefPoint(0:4){M_t} \tkzDefPoint(\vara:3){N_t}%
+        \tkzDefShiftPoint[M_t](0:-\varx){M_0}%
+        \tkzDefShiftPoint[N_t](\vara:-\varx){N_0}%
 
-  Der Umkreismittelpunkt einer Dreiecks wird durch den Schnittpunkt der
-  Mittelsenkrechten der Dreiecksseiten bestimmt. Also wird $m_0$ mit $x=0$ und
-  $m_x$ mit einem unbestimmten $x$ verglichen. Liegen $m_x$ und $m_0$ immer auf
-  der gleichen Geraden, so gilt dies für alle $m$.
+        \foreach \i in {0, t} { \foreach \kl/\mn in {K/M, L/N} {%
+            \tkzDefLine[mediator](P,\mn_\i) \tkzGetPoints{\kl_\i_1}{\kl_\i_2}%
+            \tkzInterLL(\kl_\i_1,\kl_\i_2)(P,\mn_\i) \tkzGetPoint{\kl_\i} }%
+          \tkzInterLL(K_\i_1,K_\i_2)(L_\i_1,L_\i_2) \tkzGetPoint{U_\i} }%
 
-  % Bild
+        \tkzInterLL(L_0_1,L_0_2)(K_t_1,K_t_2) \tkzGetPoint{S}%
+        % \tkzInterLL(K_0_1,K_0_2)(L_t_1,L_t_2) \tkzGetPoint{R}%
 
+        \tkzFillAngles[fill=blue!20,size=0.4](M_t,P,N_t)%
+        \tkzFillAngles[fill=green!20,size=0.2](U_0,S,K_t)%
+        \tkzFillAngles[fill=blue!20,size=0.23](U_t,S,U_0)%
+
+        % \tkzDefLine[parallel=through L_t](L_0,S) \tkzGetPoint{L_t'}%
+        % \tkzDefLine[parallel=through K_t](K_0,R) \tkzGetPoint{K_t'}%
+        \tkzDrawLines(P,M_t P,N_t)%
+        \tkzDrawLines[add= 0 and 0](K_t,U_t L_t,U_t K_0,U_0 L_0,S)%
+        \tkzDrawLines[add=2.5 and 3](U_0,U_t)%
+        \tkzDrawPolygon[orange, very thick](U_t,U_0,S)%
+        \tkzDrawSegments[blue, very thick](N_t,N_0 M_t,M_0)%
+        \tkzDrawSegments[purple, very thick](L_0,L_t K_0,K_t)%
+
+        \tkzMarkAngle[size=0.4](M_t,P,N_t)%
+        \tkzMarkAngle[size=0.2](U_0,S,K_t)%
+        \tkzMarkAngle[size=0.23](U_t,S,U_0)%
+        \tkzMarkRightAngles[german](P,L_t,U_t P,L_0,U_0 U_t,K_t,P U_0,K_0,P)%
+        
+        \tkzDrawPoints(P, M_t, N_t, M_0, N_0, K_0, K_t, L_0, L_t, U_0, U_t, S)%
+        
+        \tkzLabelPoints[left, yshift=-3pt](P) \tkzLabelPoints[right](M_t, M_0)%
+        \tkzLabelPoints[below right, xshift=-0.5em](K_0, K_t)%
+        \tkzLabelPoints[below](N_t, N_0) \tkzLabelPoints[below, xshift=3pt](L_0,
+        L_t)%
+        \tkzLabelPoints[left](U_0) \tkzLabelPoints[above](S)%
+        \tkzLabelPoints[left](U_t) \tkzLabelLine[below, pos=1.2](M_t, P){$m$}%
+        \tkzLabelLine[below right, pos=1.18](N_t, P){$n$}%
+      \end{tikzpicture}
+    \caption{}
+    \label{fig:1} 
+  \end{figure}
+  In~\autoref{fig:1} stehen $L_t$, $L_0$, $K_t$ und $K_0$ alle für den
+  Mittelpunkt der Strecke von $N_t$, $N_0$, $M_t$ und $M_0$ bis $P$. Der Punkt
+  $S$ ist 
+  
+  Da die Winkelsumme im Viereck immer einen Wert von $360°$ hat, gilt für den
+  blauen Winkel $\angle L_0PK_0$ und den hellgrünen Winkel $\angle K_0PL_0$ im Viereck $ PK_0U_0L_0 $:
+  \begin{equation}
+    \label{sec1:eq1}
+    \angle L_0PK_0 + 2\cdot 90° + \angle L_0U_0K_0 = 360°\Rightarrow \angle L_0U_0K_0 = 180° - \angle L_0PK_0
+  \end{equation}
+  Da die farbigen Winkel $ \angle K_0PL_0 $ und $ \angle U_tSU_0 $ an $S$
+  Nebenwinkel sind, summieren sie sich zu $180°$. Daraus folgt, dass die beiden
+  hellblauen Winkel gleich groß sind (Sonst hätte ich den Winkeln schließlich
+  nicht die selbe Farbe gegeben :P), denn es gilt mit~\eqref{sec1:eq1}:
+  \begin{equation*}
+    \angle U_tSU_0 = 180° - \angle K_0PL_0 = 180° - (180° - \angle L_0PK_0) = \angle L_0PK_0
+  \end{equation*}
+  
+  Die Höhen des orangen Dreiecks auf $[U_tS]$ und $[U_0S]$ sind genauso lang wie
+  die jeweiligen roten Strecken $[K_tK_0]$ und $[L_tL_0]$, denn
+
+
+  
   Dreieck $PRL_{N_{x}}$ ist zu Dreieck $L_{M_0}RS$ ähnlich, da sie beide einen
   rechten Winkel haben und einen Winkel bei $R$ teilen. Also hat $\angle
   L_{M_0}SR$ genauso wie $\angle RPL_{N_x}$ den Wert $α$.\\
@@ -302,7 +367,7 @@
     90°-\dfrac{α}{2} \] Die Gerade $(U_0;U_x)$ ist also eine Rotation von
   $(M_0;S)$ an $U_0$ um einen Winkel von $90°-\dfrac{α}{2}$ im Uhrzeigersinn. Da
   alle dieser geometrischen Objekte unabhängig von $x$ sind, ist die Gerade
-  $(U_0;U_x)$ es auch. Also liegen alle $U$ auf einer Geraden. Weshalb es einen
+i  $(U_0;U_x)$ es auch. Also liegen alle $U$ auf einer Geraden. Weshalb es einen
   zweiten festen Punkt geben muss, welcher auf dem gleichen Kreis wie $P$, $M$
   und $N$ liegt.
 \end{proof}
@@ -312,10 +377,12 @@
   Mittelsenkrechten die Enden der Strecke, welche die Mittelsenkrechte teilt,
   gleich weit entfernt ist, müssen auch $R$ und $S$ gleich weit von m entfernt
   sein. Liegt $R$ also auf dem Kreis $K$ um m, so muss gleiches für $S$ gelten.
+  UMSCHREIBEN
+  TODO
 \end{proof_thm}
 \begin{proof_thm}{\autoref{sec3:lemma2}}
   Die Höhen werden nach den Seiten auf welchen sie stehen, $h_a$ und $h_b$
-  genannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdot
+  enannt. Die Fläche eines Dreiecks kann mit der Formel $A=\frac{h_x\cdot
     x}{2}$ berechnet werden. Dabei ist $x$ eine beliebige Seite. Also gilt:
   \begin{equation}\label{sec3:equation1}
     \dfrac{h_a\cdot a}{2}=A=\dfrac{h_b\cdot b}{2}
@@ -327,16 +394,17 @@
 
 \newpage
 \begin{aufgabe}
-  In jedem Feld einer Tabelle mit m Zeilen und n Spalten, wobei m < n ist, steht
-  eine nicht-negative reelle
-  Zahl; dabei kommt in jeder Spalte mindestens eine positive Zahl vor.\\
-  Beweise: Es gibt ein Feld mit einer positiven Zahl derart, dass die Summe der
-  Zahlen in der Zeile dieses
-  Feldes größer ist als die Summe der Zahlen in der Spalte dieses Feldes.\\
+  In jedem Feld einer Tabelle mit $m$ Zeilen und $n$ Spalten, wobei $m < n$ ist,
+  steht eine nicht-negative reelle Zahl; dabei kommt in jeder Spalte mindestens
+  eine positive Zahl vor.\\
+  Beweise: Es gibt ein Feld mit einer positiven Zahl
+  derart, dass die Summe der Zahlen in der Zeile dieses Feldes größer ist als
+  die Summe der Zahlen in der Spalte dieses Feldes.\\
 \end{aufgabe}
 \begin{proof}
   Aus der Aufgabenstellung folgt, dass die Tabelle mit Nullen und positiven
-  Zahlen gefüllt ist.\\
+  Zahlen gefüllt ist.
+
   Anstatt den Werten der einzelnen Felder, werden nur die Beträge der Spalten
   $S$ und die Beträge der Zeilen $Z$ betrachtet. Da die Felder nur durch ihre
   jeweilige Spalte und Zeile bestimmt sind, können Spalten und Zeilen nach ihrer
@@ -346,10 +414,10 @@
   \begin{itemize}[itemsep=2ex]
   \item[(1)]\emph{Induktionsanfang}:\\
     Es wird mit der kleinstmöglichen Tabelle angefangen. Eine vorgabengemäße
-    Tablle hat in jeder Spalte mindestens ein positiv gefülltes Feld, also
+    Tabelle hat in jeder Spalte mindestens ein positiv gefülltes Feld, also
     mindestens ein Feld. Da $m<n$ gilt, sind also alle Tabellen kleiner
     $2\text{x}1$ schon im Voraus ausgeschlossen. Doch auch Tabellen der Größe
-    $2\text{x}1$ können nicht existieren, denn beide Felder der Tabelle müsen
+    $2\text{x}1$ können nicht existieren, denn beide Felder der Tabelle müssen
     positiv gefüllt sein. Doch da die beiden Felder auch in der gleichen Zeile
     sind, muss bei ihnen der Wert der Zeile größer sein, als der jeweilige Wert
     der Spalte, welcher dem Wert ihres Feldes entspricht.
@@ -361,7 +429,7 @@
     \begin{align*}
       % $
       \sum_{i=1}^{m}z_i=\sum_{j=1}^{m+o}s_j&=\sum_{j=1}^{m}s_j+\sum_{j=m+1}^{m+o}s_j\\
-      \Rightarrow -\sum_{j=m+1}^{m+o}s_p&= \sum_{i=1}^{m}s_i-z_i
+      \Rightarrow -\sum_{j=m+1}^{m+o}s_p&= \sum_{i=1}^{m}(s_i-z_i)
       % $
     \end{align*}
     Da alle Spalten einen positiven Wert haben müssen(mind. ein Feld muss
