@@ -2,7 +2,7 @@
 \documentclass[10pt, a4paper, reqno]{amsart}
 \usepackage[utf8x]{inputenc}
 \usepackage{polyglossia}
-\setdefaultlanguage{ngerman}
+\setmainlanguage{ngerman}
 \usepackage{enumitem}
 
 \usepackage{xcolor}
@@ -27,16 +27,16 @@
 \fancyheadoffset{0cm} 
 \usepackage[
   a4paper,
-  right=6cm,
+  right=1cm,
   footskip=3em,
   twoside=false,
-  lmargin=1.4cm,
+  left=6cm,
   %bottom=4cm,
   %top=4cm
   xetex
 ]{geometry}
 \usepackage{unicode-math}
-\listfiles
+
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
 \pushQED{\qed}%
@@ -98,12 +98,18 @@
   \large\textbf{Hilfsmittel:}
 \end{center}
 \vspace*{3pt}
+\hyphenation{auf-ge-ru-fen}
+\hyphenation{he-raus-zu-fin-den}
+\hyphenation{Ver-bin-dungs-lin-ien}
+\hyphenation{Glei-chung}
 \begin{itemize}
-\item Gaußsche Summenformel: \url{https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Summenformel}, zuletzt
+\item Gaußsche Summenformel:\\
+  \url{https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Summenformel}, zuletzt
   aufgerufen am Fr, 28 August 2020
-\item Kongruenz: \url{https://de.wikipedia.org/wiki/Kongruenz_(Zahlentheorie)}, zuletzt
+\item Kongruenz:\\
+  \url{https://de.wikipedia.org/wiki/Kongruenz_(Zahlentheorie)}, zuletzt
   aufgerufen am Fr, 28 August 2020
-\item Vollständige Induktion:
+\item Vollständige Induktion:\\
   \url{https://de.wikipedia.org/wiki/Vollst%C3%A4ndige_Induktion}, zuletzt
   aufgerufen am So, 30 August 2020
 \end{itemize}
@@ -136,24 +142,24 @@
 \begin{proof}
   Für einen einfacher lesbaren Beweis werden die Nuggets jeweils nach ihrer
   Masse benannt. Nugget $1234$ steht also für das Nugget mit der Masse $1234$g.
-  Zusätzlich werden einige Variablen nach dem entsprechenden Vergabevorgang benannt.
+  Außerdem wird ohne die Einheit Gramm gerechnet und die meisten Variablen werden nach dem entsprechenden Vergabevorgang benannt.
   Zum Beispiel steht $r_{2019}$ für das Gewicht der roten Truhe nach der Vergabe
   des 2019ten Nuggets, welches ein Gewicht von $n_{2019}$ hat.
   
-  Zuerst wird die Obergrenze für den Schatz, welchen Smilla noch garantieren
-  kann, bestimmt. Dazu wird die Situation vor der Vergabe des letzten Nuggets
-  $n_{2020}$ betrachtet. Zu diesem Zeitpunkt liegen natürlich alle Nuggets bis
-  auf das letzte in den beiden Truhen. Als Gleichung unter Anwendung
-  von ~\autoref{sec1:Zahlensumme} ausgedrückt:
+  Zuerst wird bestimmt wie viel Gold Smilla bekommen kann, wenn Leo ideal
+  spielt, aber trotzdem zwei Idealfälle eintreten. Dazu wird die Situation vor
+  der Vergabe des letzten Nuggets $n_{2020}$ betrachtet. Zu diesem Zeitpunkt
+  liegen alle Nuggets bis auf das letzte in den beiden Truhe (Anwendung
+  von~\autoref{sec1:Zahlensumme}):
   \begin{equation}\label{sec1:equation1}
     r_{2019}+b_{2019}=\sum_{k=1}^{2020}\left(k\right)-n_{2020}=\frac{2020\cdot2021}{2}-n_{2020}
   \end{equation}
-  Da Smilla sich nach der Vergabe des letzten Nuggets ihre Truhe aussuchen darf
+  Da Smilla sich nach der letzten Verteilung ihre Truhe aussuchen darf
   wird Leo die leichtere Truhe bekommen. Also wird Leo versuchen die Truhen so
   gleichmäßig wie möglich zu füllen. Daher wird Leo bei der Vergabe des letzten
   Nuggets logischerweise die leichtere Truhe für das letzte Nugget wählen.
 
-  Angenommen $r_{2019}\leq b_{2019}$ gilt vor der Vergabe des letzten Nuggets (Die Truhen sind
+  Angenommen $r_{2019}\leq b_{2019}$ gilt bei der letzten Verteilung (Die Truhen sind
   austauschbar), dann wird Leo die rote, leichtere Truhe wählen und Smilla wird das letzte
   Nugget $n_{2020}$ in diese Truhe legen. Daraus folgt bei Einsetzen von~\eqref{sec1:equation1}:
   \begin{equation}\label{sec1:equation2}
@@ -168,7 +174,7 @@
   daher aus~\eqref{sec1:equation1}:
   \begin{equation}\label{sec1:equation3}
     \begin{split}
-      b_{2019} + r_{2019}= 2b_{2019} &=1010\cdot2021-n_{2020}\\
+      r_{2019} + b_{2019}= 2b_{2019} &=1010\cdot2021-n_{2020}\\
       \Rightarrow b_{2019} &=505\cdot2021-\frac{n_{2020}}{2}
     \end{split}
   \end{equation}
@@ -184,18 +190,22 @@
   Die folgende Strategie zeigt, dass Smilla die Obergrenze erreichen kann.
 
   Smilla teilt alle Nuggets bis auf $2020$ in zwei gleich schwere Gruppen. Das
-  ist möglich, da alle Nuggets von $1$ bis $2019$ dabei sind und das größte
-  Nugget $2019$ gleich $4\cdot504+3$ ist, weshalb~\autoref{sec1:zahlengruppen}
-  anwendbar ist. Jede Gruppe entspricht dabei einer Truhe und hat einen Wert von
-  $\frac{\sum^{2019}_{k=1}k}{2} = \frac{\frac{2019\cdot2020}{2}}{2} =
-  505\cdot2019$. Werden die Nuggets nun verteilt, so legt Smilla in die von Leo
-  ausgewählte Truhe ein Nugget der entsprechenden Gruppe. Wählt Leo irgendwann eine Truhe aus, in
-  welcher schon alle Nuggets der entsprechenden Gruppe liegen, so legt Smilla das
-  Nugget $2020$ in diese Truhe. Danach hat diese Truhe einen Wert von
-  $505\cdot2019 + 2020 = 505\cdot2023 = 1021615$. Leo muss eine solche Truhe spätestens auswählen,
-  wenn alle Nuggets bis auf $2020$ aufgeteilt sind, weshalb beide Truhen mit
-  ihrer Gruppen gefüllt sind. Also erreicht eine der Truhen immer einen Wert von
-  $1021615$, womit die Obergrenze erreicht ist.
+  ist möglich, da~\autoref{sec1:zahlengruppen} anwendbar ist, schließlich
+  ist die größte dieses zusammenhängenden Abschnitt der nätürlichen Zahlen
+  $2019$ gleich $4\cdot504 + 3$.
+
+  Jede Gruppe entspricht dabei einer Truhe und hat einen Wert von
+  \[\frac{\sum^{2019}_{k=1}k}{2} = \frac{\frac{2019\cdot2020}{2}}{2} =
+    505\cdot2019\] Werden die Nuggets nun verteilt, so legt Smilla in die von
+  Leo ausgewählte Truhe ein Nugget der entsprechenden Gruppe. Wählt Leo
+  irgendwann eine Truhe aus, in welcher sich schon alle Nuggets der
+  entsprechenden Gruppe befinden, so legt Smilla das Nugget $2020$ in diese
+  Truhe. Danach hat diese Truhe einen Wert von
+  $505\cdot2019+2020=505\cdot2023= 1021615$. Leo muss eine solche Truhe
+  spätestens auswählen, wenn alle Nuggets bis auf $2020$ aufgeteilt sind, denn
+  dann müssen sich beide Gruppen vollständig in ihrer Truhe befinden. Also
+  erreicht eine der Truhen immer einen Wert von $1021615$, womit die Obergrenze
+  erreicht ist.
 \end{proof}
 \begin{proof_thm}{\autoref{sec1:Zahlensumme}}
   \begin{align*}
@@ -208,9 +218,9 @@
   Die Zahlenreihe wird um Null erweitert, sodass die Reihe aus insgesamt
   $n+1=4(k+1)$ Zahlen besteht. Nun wird die Zahlenfolge in der Mitte „gefaltet“.
   Die kleinste Zahl wird mit der Größten gepaart $\Rightarrow (0;n)$, die zweit
-  Kleinste mit der zweit Größten $\Rightarrow (1;n-1)$, $(2;n-2)$, etc.. So
-  entstehen $\frac{4(k+1)}{2}=2(k+1)$ Paare, jeweils mit einer Summe von
-  $(j)+(n-j) = n$ mit $0\leq j \leq n$, $j∈ℕ_0$. Da die Paare alle gleich groß
+  Kleinste mit der zweit Größten $\Rightarrow (1;n-1)$, $(2;n-2)$, etc. So
+  entstehen $\frac{4(k+1)}{2}=2(k+1)$ Paare der Form $(j;n-j)$ mit $0\leq j \leq n$, $j∈ℕ_0$, jeweils mit einer Summe von
+  $j+(n-j) = n$. Da die Paare alle gleich groß
   sind und es eine gerade Anzahl von ihnen gibt, können sie in zwei Gruppen mit
   gleich vielen Paaren und daher gleicher Summe unterteilt werden. Dabei kann
   nun die Null wieder entfernt werden, schließlich verändert sie die Summe
@@ -220,7 +230,7 @@
 \newpage
 \begin{aufgabe}
   Beweise: Es gibt keine rationalen Zahlen $x$, $y$, $z$ mit $x + y + z = 0$ und
-  $x + y + z = 100$.
+  $x^2 + y^2 + z^2 = 100$.
 \end{aufgabe}
 \begin{lemma}\label{sec2:rational1}
   Jeder Quotient $\frac{a}{b}$ zweier rationaler Zahlen $a,b∈ℚ\backslash\{0\}$
@@ -240,13 +250,13 @@
       \Rightarrow x^2+xy+y^2&=50
     \end{split}
   \end{equation}
-  Nun wird angenommen, dass $x$ und $y$ rational sind und aus (1) ein Widerspruch hergeleitet:
+  Nun wird angenommen, dass $x$ und $y$ rational sind und so aus (1) ein Widerspruch hergeleitet:
 
-  Aus~\eqref{eq:1} folgt direkt, dass $x$ oder $y$ nicht gleich Null sein können. Ist eine der Variablen
-  Null so gilt: $0^2+0\cdot a+a^2=a^2=50\Rightarrow a = \pm5\sqrt{2}$. $a$ ist
+  Aus~\eqref{eq:1} folgt direkt, dass $x$ oder $y$ nicht gleich Null sein können. Wäre eine der Variablen
+  Null so würde $0^2+0\cdot a+a^2=a^2=50\Rightarrow a = \pm5\sqrt{2}$ gelten. $a$ ist
   dabei ein Platzhalter für $x$ oder $y$. Da $\sqrt{2}$ irrational ist, muss
-  wegen~\autoref{sec2:rational1} $a$ irrational sein, womit ein Widerspruch
-  entsteht.
+  wegen~\autoref{sec2:rational1} $a$ irrational sein, was nicht in Einklang mit
+  der angenommenen Rationalität von $x$ und $y$ zu bringen ist.
   
   Durch Teilen von~\eqref{eq:1} durch $x^2$ entsteht
   $(\frac{y}{x})^2+\frac{y}{x}+1=\frac{50}{x^2}$. Das Teilen durch $x^2$ ist
@@ -261,42 +271,42 @@
     \begin{split}
       \left(\frac{m_q}{n_q}\right)^2+\frac{m_q}{n_q}+1&=\frac{50}{\left(\frac{m_x}{n_x}\right)^2}=\frac{2\cdot 5^2n_x^2}{m_x^2}\\
       \Rightarrow \frac{m_q^2+m_q\cdot n_q +
-        n_q^2}{2}&=\frac{5^2n_x^2n_q^2}{m_x^2}
+        n_q^2}{2}&=\frac{5^2n_x^2n_q^2}{m_x^2} =\left(\frac{5n_xn_q}{m_x}\right)^2
     \end{split}
   \end{equation}
-  Da jeder Primfaktor von $n_x$, $n_q$ und $m_x$ durch das Quadrat verdoppelt
-  wird, müssen in der Primfaktorzerlegung von $(\frac{5n_xn_q}{m_x})^2$ alle
-  Primfaktoren gerade Exponenten haben. Gleiches muss für
-  $\frac{m_q^2+m_q\cdot{}n_q+n_q^2}{2}$, insbesondere für den Primfaktor $2$
-  gelten. Doch solange der Zähler des Bruches nicht durch zwei teilbar ist, hat
-  $2$ im Bruch den ungeraden Exponenten $-1$. Um herauszufinden, ob der Zähler
-  überhaupt durch zwei teilbar sein kann wird unter Anwendung von
-  Kongruenz (siehe:
-  \url{https://de.wikipedia.org/wiki/Kongruenz_(Zahlentheorie)}, zuletzt
-  aufgerufen am Fr, 28 August 2020) zwischen drei Fällen unterschieden:
+  Da jeder Primfaktor von $n_q$, $n_x$ und $m_x$ durch das Quadrat verdoppelt
+  wird, müssen in der Primfaktorzerlegung von
+  $\left(\frac{5n_xn_q}{m_x}\right)^2$ alle Primfaktoren gerade Exponenten
+  haben. \hyphenation{Glei-ches}Gleiches muss für $\frac{m_q^2+m_q\cdot{}n_q+n_q^2}{2}$, insbesondere
+  für den Primfaktor $2$ gelten. Doch solange der Zähler des Bruches nicht durch
+  zwei teilbar ist, hat $2$ den ungeraden Exponenten $-1$. Um
+  herauszufinden, ob der Zähler überhaupt durch zwei teilbar sein kann wird
+  unter Anwendung von Kongruenz zwischen drei Fällen unterschieden:
   \begin{itemize}[itemsep=2ex]
   \item $m_q$ und $n_q$ sind beide ungerade:
     \[m_q^2+m_qn_q+n_q^2\equiv1^2+1\cdot1+1^2\equiv1\pmod{2}\] In
     diesem Fall ist der Zähler ungerade.
   \item $m_q$ ist gerade und $n_q$ ungerade:
     \[m_q^2+m_qn_q+n_q^2\equiv0^2+0\cdot1+1^2\equiv1\pmod{2}\] Auch in diesem Fall ist der Zähler ungerade.
-  \item $m_q$ ist ungerade und $n_q$ gerade:
+  \item $m_q$ ist ungerade und $n_q$ gerade:\\
     Da der Zähler symmetrisch in Rücksicht auf $m_q$ und $n_q$ ist, gilt gleiches wie im vorherigen
     Fall.
-  \item $m_q$ und $n_q$ sind beide gerade:
+  \item $m_q$ und $n_q$ sind beide gerade:\\
     Es dürfen nicht beide Variablen gerade sein, da sie nach ihrer Definition die
     Zahl $q=\frac{y}{x}$ gekürzt darstellen sollen. Sie müssen daher teilerfremd sein.
   \end{itemize}
   In jedem möglichen dieser Fälle ist der Exponent von $2$ auf der linken Seite
-  von~\eqref{eq:2} also im Gegensatz zu der Rechten ungerade. Daher kann $\frac{y}{x}$ also keine rationale
+  von~\eqref{eq:2} im Gegensatz zur rechten Seite ungerade. Also
+  muss~\eqref{eq:2} falsch sein. Also kann $\frac{y}{x}$ keine rationale
   Zahl sein, wenn auch $x$ eine rationale
   Zahl ist. Doch gleichzeitig muss $\frac{y}{x}$ eine rationale Zahl sein, wenn $x$ und $y$ beide rational
   sind.
   Daher können $x$ und $y$ nicht beide rational sein.
 \end{proof}
 \begin{proof_thm}{\autoref{sec2:rational1}}
-  Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch $\frac{m_b}{n_b}$ beschrieben,
-  wobei $m_a,n_a,m_b,n_b∈ℤ\backslash\{0\}$ gilt, so kann der Quotient umgeschrieben werden:
+  Wird $a$ durch $\frac{m_a}{n_a}$ und $b$ durch
+  $\frac{m_b}{n_b}$ beschrieben, wobei $m_a,n_a,m_b,n_b∈ℤ\backslash\{0\}$ gilt, so kann der Quotient
+  umgeschrieben werden:
   \begin{equation*}
     \frac{a}{b} = \dfrac{\frac{m_a}{n_a}}{\frac{m_b}{n_b}}=\frac{m_a\cdot n_b}{m_b\cdot n_a}
   \end{equation*}
@@ -326,7 +336,7 @@
 \end{aufgabe}
 \begin{lemma}\label{sec3:lemma1}
   Für jeden festen Punkt $P$ und jeden von $P$ verschiedenen Punkt $Q$ existiert ein Gerade $g$, sodass
-  der Mittelpunkt von jedem Kreis, welcher durch beide Punkte führt, auf der
+  der Mittelpunkt $U$ von jedem Kreis, welcher durch beide Punkte führt, auf der
   Geraden liegt.
 \end{lemma}
 \begin{lemma}\label{sec3:lemma3}
@@ -341,12 +351,13 @@
 \end{lemma}
 \begin{proof}
   Nur wenn der Mittelpunkt $U$ des Kreises durch $P$, $M$ und $N$, zu jedem Zeitpunkt auf der gleichen Geraden
-  liegt und $P$ nicht auf dieser Geraden liegt, existiert nach~\autoref{sec3:lemma1} ein weiterer fester Punkt $Q$,
+  liegt und $P$ nicht auf dieser Geraden liegt, kann nach~\autoref{sec3:lemma1}
+  ein weiterer fester Punkt $Q$ existieren,
   welcher genauso wie $P$ auf dem Kreis liegt.
 
   Um die Existenz der Geraden zu beweisen wird nun die Gerade $(U_tU_0)$ in
-  Abhängigkeit der Zeit $t$ konstruiert. Dabei ist $U_0$ der Kreismittelpunkt
-  von $t=0$. Ist die Gerade unabhängig von $t$, dann liegen also alle $U$ auf
+  Abhängigkeit der Zeit $t$ betrachtet. Dabei ist $U_0$ der Kreismittelpunkt
+  von $t=0$. Ist $(U_tU_0)$ unabhängig von $t$, dann liegen also alle $U$ auf
   der gleichen Gerade.
 
   \begin{figure}[h]
@@ -404,27 +415,26 @@
     \label{fig:1}
   \end{figure}
 
-  Da der Kreis um $U$ durch $P$, $M$ und $N$ gehen muss, entspricht er also dem
+  Da der Kreis um $U$ durch $P$, $M$ und $N$ gehen muss, entspricht er dem
   Umkreis des Dreiecks $PMN$. Der Umkreismittelpunkt $U$ ist der Schnittpunkt der Mittelsenkrechten
   der Dreiecksseiten. Also werden die Schnittpunkte der Mittelsenkrechten auf $[NP]$
-  und $[MP]$ für die beiden Zeitpunkte konstruiert, denn zwei Mittelsenkrechten
-  reichen aus, um den Umkreismittelpunkt zu bestimmen.
+  und $[MP]$ für $t=0$ und einen unbestimmten Zeitpunkt in~\autoref{fig:1} konstruiert (Zwei
+  Mittelsenkrechten reichen aus um den Umkreismittelpunkt zu bestimmen.).
   
   In~\autoref{fig:1} stehen $L_t$, $L_0$, $K_t$ und $K_0$ jeweils für den
   Mittelpunkt der Strecke von $N_t$, $N_0$, $M_t$ und $M_0$ bis $P$. Der Punkt
   $S$ ist der Schnittpunkt der Senkrechten auf $L_0$ und der Senkrechten auf
   $K_t$.
 
-  $(U_tU_0)$ ist die Rotation von $(L_0U_0)$ an $U_0$ um den Winkel $\angle
-  SU_0U_t$. Da weder $L_0$ noch $U_0$ von der Zeit abhängig sind, ist die
-  Gerade $(U_tU_0)$ auch unabhängig, wenn gleiches für den Winkel $\angle
-  SU_0U_t$ gilt. Daher wird dieser Winkel nun bestimmt.
+  Wie in~\autoref{fig:1} zu sehen ist, ist $(U_tU_0)$ die Rotation von $(L_0U_0)$ an $U_0$ um den Winkel
+  $\angle{}SU_0U_t$. Da weder $L_0$ noch $U_0$ von der Zeit abhängig sind, ist
+  die Gerade $(U_tU_0)$ auch unabhängig, wenn gleiches für den Winkel $\angle
+  SU_0U_t$ gilt. Also wird dieser Winkel nun bestimmt.
   
-  Da das organgene Dreieck $U_0SU_t$ von den beiden Paaren an Parallelen
-  $(U_0K_0) || (U_tK_t)$ und $(L_0S) || (L_tU_t)$ eingerahmt wird, entsprechen
-  die violetten Strecken $[K_tK_0]$ und $[L_tL_0]$ (siehe~\autoref{fig:1}) den Höhen des orangen
-  Dreiecks auf den Seiten $U_tS$ und $U_0S$. Für die Strecken $[L_tL_0]$,
-  $[K_tK_0]$ gilt:
+  Da das organgene Dreieck $U_0SU_t$ von den beiden Parallelenpaaren
+  $(U_0K_0)\ ||\ (U_tK_t)$ und $(L_0S)\ ||\ (L_tU_t)$ eingerahmt wird, entsprechen
+  die violetten Strecken $[K_tK_0]$ und $[L_tL_0]$ den Höhen des orangen
+  Dreiecks auf den Seiten $U_tS$ und $U_0S$. Für die Strecken $[L_tL_0]$ und $[K_tK_0]$ gilt:
   \begin{align*}
     \overline{L_tL_0}&=\overline{L_tP}-\overline{L_0P}=\frac{\overline{N_tP}}{2} - \frac{\overline{N_0P}}{2} = \frac{\overline{N_tN_0}}{2}\\
     \overline{K_tK_0}&=\overline{K_tP}-\overline{K_0P}=\frac{\overline{M_tP}}{2} - \frac{\overline{M_0P}}{2} = \frac{\overline{M_tM_0}}{2}
@@ -433,17 +443,17 @@
   beiden Zeitpunkten zurücklegen. Da $M$ und $N$ sich gleich
   schnell fortbewegen, sind die beiden Strecken gleich lang. Gleiches gilt für
   die violetten Strecken, weil sie jeweils halb so lang wie die Blauen sind.
-  Aus~\autoref{sec3:lemma2} folgt daher, dass das orangene Dreieck $U_0SU_t$
-  gleichschenklig ist.
+  Aus~\autoref{sec3:lemma2} folgt daher, dass das orangene Dreieck $U_0SU_t$ mit
+  den Schenkeln $U_tS$ und $U_0S$ gleichschenklig ist.
 
   Nun wird der Wert des Winkels $\angle SU_0U_t$ bestimmt. Aus der
-  Gleichschenkligkeit von $U_0SU_t$ folgt:
+  Gleichschenkligkeit von des Dreiecks $U_0SU_t$ folgt:
   \begin{equation}
     \label{eq:7}
     \begin{split}
       \angle SU_0U_t& +\angle U_0U_tS + \angle U_tSU_0 = 180°\\
-      2\angle SU_0U_t&= 180° - \angle U_tSU_0\\
-      \angle SU_0U_t&= 90° - \frac{\angle U_tSU_0}{2}
+      \Rightarrow2\angle SU_0U_t&= 180° - \angle U_tSU_0\\
+      \Rightarrow\hphantom{2}\angle SU_0U_t&= 90° - \frac{\angle U_tSU_0}{2}
     \end{split}
   \end{equation}
   Da der blaue Winkel $\angle U_tSU_0$ und der grüne Winkel $\angle L_0SK_t$
@@ -468,15 +478,16 @@
     \Rightarrow \angle SU_0U_t &= 90° -\frac{180°-(180° - \angle K_tPL_0)}{2}\\
     \Rightarrow \angle SU_0U_t &= 90° -\frac{\angle K_tPL_0}{2}\\
   \end{align*}
-  Da die beiden Geraden $m$ und $n$ nicht von der Zeit abhängig sind, ist es
-  also auch nicht der Winkel $\angle K_tPL_0$ und damit auch $\angle SU_0U_t$ nicht.
-  Damit ist die Gerade $(U_tU_0)$ unabhängig von der Zeit definiert, also ist
-  sie für alle $t$ identisch, womit alle $U$ auf der gleichen Geraden liegen.
+  Da die beiden Geraden $m$ und $n$ nicht zeitabhängig sind, ist es
+  also auch nicht der Winkel $\angle K_tPL_0$ und daher auch $\angle SU_0U_t$ nicht.
+  Damit ist die Gerade $(U_tU_0)$ unabhängig $t$ definiert, sie ist also für
+  alle $t$ identisch, womit alle $U$ auf der gleichen Geraden liegen.
+  
   %Also ist die Gerade $(U_tU_0)$ eine Rotation der Gerade $(L_0U_0)$ an $U_0$ um
   %den Winkel $90° -\frac{\angle K_tPL_0}{2}$ gegen den Uhrzeigersinn. Da weder $U_0$, die Senkrechte durch $L_0$, noch der Winkel $\angle K_tPL_0$
   %von $t$ abhängig sind, ist die Gerade $(U_tU_0)$ also auch unabhängig von $t$.
   %Daraus folgt, dass alle $U$ auf der gleichen Geraden liegen.
-  Also muss wegen~\autoref{sec3:lemma3} ein weiterer fester Punkt
+  Daher muss wegen~\autoref{sec3:lemma3} ein weiterer fester Punkt
   $Q$ existieren, sodass alle Kreise, welche durch $P$ führen und dessen
   Mittelpunkte auf $(U_tU_0)$ liegen, auch durch $Q$ führen, solange
   $P$ nicht auf der Geraden $(U_tU_0)$ liegt.
@@ -488,8 +499,10 @@
   gleichzeitig auf $P$ liegen, was durch die Aufgabenstellung verboten ist.
 \end{proof}
 \begin{proof_thm}{\autoref{sec3:lemma1}}
-  Der Punkt $U$ wird mit $P$ und $Q$ verbunden und das Lot durch $U$ auf $[PQ]$
-  wird in~\autoref{fig:3} eingezeichnet:
+  Das Lot durch den Kreismittelpunkt $U$ auf $[PQ]$ und die Verbindungslinien
+  zwischen $U$ und den Punkten $P$ und $Q$ werden
+  in~\autoref{fig:3} eingezeichnet:
+  
   \begin{figure}[h]
     \centering
     \begin{tikzpicture}
@@ -513,7 +526,7 @@
     \caption{}
     \label{fig:3}
   \end{figure}
-  Über den Satz des Pythagoras können in den Dreiecken $PMU$ und $MQU$ die Längen von $[PU]$ und $[UQ]$
+  Über den Satz des Pythagoras können in den rechtwinkligen Dreiecken $PMU$ und $MQU$ die Längen von $[PU]$ und $[UQ]$
   umgeschrieben werden:
   \begin{align*}
     \overline{PU}^2&=\overline{PM}^2+\overline{UM}^2 &\Rightarrow \overline{PU}=\sqrt{\overline{PM}^2+\overline{UM}^2}\\
@@ -528,9 +541,9 @@
     \Rightarrow\overline{PM}^2&=\overline{QM}^2\\
     \Rightarrow\overline{PM}\hphantom{{}^2}&=\overline{QM}
   \end{align*}
-  Also sind in diesem Fall auch $[PM]$ und $[QM]$, unabhängig von $[UM]$, gleich
-  lang. Da $g$ das Lot auf $[PQ]$ durch $U$ ist und nun $PQ$ halbiert, ist $g$
-  die Mittelsenkrechte von $[PQ]$. Daher müssen alle Punkte welche den
+  Also sind auch $[PM]$ und $[QM]$, unabhängig von $[UM]$, gleich
+  lang. Da $g$ $[PQ]$ halbiert und trotzdem immer noch das Lot auf $[PQ]$ durch $U$ ist, muss $g$
+  die Mittelsenkrechte von $[PQ]$ sein. Also müssen alle $U$ welche den
   gleichen Abstand zu $P$ und $Q$ haben auf der Mittelsenkrechten von $[PQ]$
   liegen.
 \end{proof_thm}
@@ -538,13 +551,13 @@
   Auf die Spiegelung von $P$ an $g$ trifft \autoref{sec3:lemma3} zu, denn bei
   der Spiegelung von Punkten an einer Achse bleiben alle Abstände erhalten und
   da sich die Symmetrieachse zu sich selbst spiegelt, entspricht jeder Punkt $U$
-  auf der Gerade $g$ seiner Spiegelung $U'$. Daher gilt: $\overline{P'U} =
-  \overline{P'U'} = \overline{PU}$. Liegt also einer der Punkte auf einem Kreis,
-  dessen Mittelpunkt auf $g$ liegt, so ist der andere Punkt vom Kreismittelpunkt
-  gleich entfernt und muss daher auch auf dem Kreis liegen.
+  auf der Gerade $g$ seiner Spiegelung $U'$. Daher gilt:
+  $\overline{P'U}=\overline{P'U'}=\overline{PU}$. Liegt $P$ also auf einem
+  Kreis, dessen Mittelpunkt auf $g$ liegt, so ist $P'$ vom
+  Kreismittelpunkt gleich weit entfernt wie $P$ und muss daher auch auf dem Kreis liegen.
 
   Nur wenn $P$ und $P'$ nicht verschieden sind wird \autoref{sec3:lemma3} nicht
-  erfüllt. Doch $P$ spiegelt sich nur zu sich selbst, wenn es auf $g$ liegt, was
+  erfüllt. Doch der Punkt $P$ spiegelt sich nur zu sich selbst, wenn $P$ auf $g$ liegt, was
   \autoref{sec3:lemma3} ausschließt.
 \end{proof_thm}
 \begin{proof_thm}{\autoref{sec3:lemma2}}
@@ -556,7 +569,8 @@
   \end{equation}
   Sind $h_a$ und $h_b$ gleich groß, so kann~\eqref{sec3:equation1} zu $a=b$
   gekürzt werden. Also hat das Dreieck zwei gleichlange Seiten. Es ist
-  gleichschenklig.
+  gleichschenklig. Die Schenkel sind dabei die Seiten auf welchen die gleichlangen
+  Höhen stehen.
 \end{proof_thm}
 
 \newpage
@@ -580,10 +594,13 @@
     Da auch $m<n$ für die Tabelle gelten muss, hat die kleinste mögliche Tabelle
     eine Größe von $2\text{x}1$.
 
-    Die Summe der Zeile, also die Summe beider Felder einer Tabelle mit Größe $2\text{x}1$ ist
-    größer als die Summe der jeweiligen Spalte, also den einzelnen Feldern. Denn
-    die beiden Felder müssen positiv gefüllt sein, sodass deren Summe auf jeden
-    Fall größer als der einzelne Summand ist.
+    Da eine Tabelle der Größe $2\text{x}1$ nur eine Zeile hat, entspricht der
+    Wert der beiden Felder jeweils der Summe der Spalte. Die Summe der Zeile ist
+    dagegen die Summe der beiden Felder. Da die beiden Felder die einzigen Felder ihrer Spalte sind, müssen sie
+    positiv gefüllt sein, weshalb deren Summe jeweils größer als der Wert des
+    einzelnen Feld sein muss. Also existieren in allen Tabellen mit der Größe
+    $2\text{x}1$ zwei positive Felder, dessen Summe der Zeile größer als die der
+    Spalte ist.
   \item[(2)]\emph{Induktionsbehauptung}:\\
     Existiert in allen Tabellen mit $(m-k+1)\text{x}(m-k)$ und $k∈ℕ^*_{<m}$
     mindestens ein positives Feld $f$ mit $z_f>s_f$, so existiert ein solches Feld auch in
@@ -593,10 +610,10 @@
     Da in allen Zeilen und allen Spalten jeweils alle Felder liegen, muss die
     Summe der Summe aller Zeilen der Summe der Summe aller Spalten
     entsprechenden. In der folgenden Gleichung stehen $s_j$ und $z_i$ jeweils
-    für die $j$-te Spalte und $i$-te Zeile. Da die Reihenfolge der Felder
-    innerhalb der Spalten und Zeilen keinen Einfluss auf deren Summe hat, werden
+    für die $j$-te Spalte und $i$-te Zeile (Da die Reihenfolge der Spalten
+    und Zeilen innerhalb der Tabelle keinen Einfluss auf deren Summe hat, werden
     Spalten und Zeilen aufsteigend nach dem Wert ihrer Summe geordnet, sodass
-    stets $z_i\leqq z_{i+1}$ und $s_j\leqq s_{j+1}$ gilt:
+    stets $z_i\leq z_{i+1}$ und $s_j\leq s_{j+1}$ gilt.):
     \begin{align*}
       % $
       \sum_{i=1}^{m}z_i=\sum_{j=1}^{m+o}s_j&=\sum_{j=1}^{m}s_j+\sum_{j=m+1}^{m+o}s_j\\
@@ -605,8 +622,9 @@
     \end{align*}
     Da alle Spalten einen positiven Wert haben müssen, muss die linke Seite der
     Gleichung negativ sein. Daraus folgt, dass nicht für jede Zeile
-    $s_i\geq\text{}z_i$ gelten darf, da die rechte Seite sonst größer gleich
-    Null ist.
+    $s_i\geq\text{}z_i$ gelten darf, schließlich hätte die rechte Seite sonst
+    einen Wert größer gleich
+    Null.
     \begin{figure}[h]
       \centering%
       \def\step{.5cm} \def\col{10} \def\row{8} \def\skip{0.05cm}
@@ -663,27 +681,29 @@
     Dabei steht $Z_{\geq i}$ für alle Zeilen mit einem Index größer gleich $i$,
     für $S_{\leq i}$ gilt entsprechendes.
 
-    Doch in diesem Fall können die blauen Felder als eigenständige Tabelle $t$
-    betrachtet werden, denn es gilt:
+    Doch sind alle lilanen Felder mit Nullen gefüllt, so können die blauen Felder als eigenständige Tabelle $t$
+    betrachtet werden, denn in diesem Fall gilt:
     \begin{itemize}
-    \item Die blauen Felder werden durch $Z<i$ und $S_{\leq i}$ definiert. Daher
-      hat $t$ eine Größe von $i\text{x}{i-1}$ die Zeilenanzahl ist also kleiner
+    \item Die blauen Felder sind alle Felder mit $Z_{<i}$ und $S_{\leq i}$. Daher
+      hat $t$ eine Größe von $i\text{x}(i-1)$. Die Zeilenanzahl ist also kleiner
       als die Spaltenanzahl.
-    \item Nur nicht negative, reelle Zahlen stehen in den Feldern, da gleiches
+    \item Nur nicht-negative, reelle Zahlen stehen in den Feldern, da gleiches
       für die große Tabelle gelten muss.
-    \item In jeder Spalte von $t$ steht mindestens eine positive Zahl, da im betrachteten
-      Fall nur Nullen in den lilanen Feldern stehen können und auch in der
-      großen Tabelle muss in jeder Spalte mindestens eine positive Zahl stehen.
+    \item In jeder Spalte von $t$ steht mindestens eine positive Zahl, da in der
+      großen Tabelle in jeder Spalte mindestens eine positive Zahl stehen muss
+      und alle positiven Felder der blau/lilanen Spalten in den blauen Feldern
+      stehen müssen.
     \end{itemize}
     Aus der Induktionsbehauptung folgt daher, dass für mindestens ein positives
     Feld $f$ der kleinen Tabelle $z_{tf}>s_{tf}$ gilt. Wie verhält sich solch
     ein Feld $f$ nun in der eigentlichen Tabelle? Die Summe der Spalte ist
     identisch, da die lilanen Felder der Spalte nur Null addieren und der Betrag
     der Zeile vergrößert sich höchstens, da keine Felder negativ gefüllt sein
-    dürfen. Der Wert des Feldes selbst verändert sich nicht. Also gilt auch in
-    der großen Tabelle $z_f>s_f$ für das Feld $f$.
-
-    Daher hat jede Tabelle mit $m<n$ ein Feld $f$ mit $z_f>s_f$.
+    dürfen. Also gilt in der großen Tabelle $z_f \geq
+    z_{tf}>s_{tf}=s_f\Rightarrow z_f > s_f$ für das Feld $f$. Da das Feld
+    genauso wie in $t$ positiv sein muss, hat jede Tabelle der Größe
+    $(m+o)\text{x}m$, $o∈ℕ^*$ ein
+    positives Feld $f$ mit $z_f>s_f$.
   \end{itemize}
 \end{proof}
 
