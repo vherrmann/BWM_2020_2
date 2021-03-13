@@ -1,0 +1,3 @@
+#+TITLE: BWM
+
+In diesem Repo liegt eine Lösung für den Bundeswettbewerb Mathematik (in Deutschland) der 2. Runde 2020. Diese Lösung hat mir einen 3.Platz eingebracht, sie ist also imperfekt und sollte eher als LaTeX Referenz verwendet werden und nicht als Vergleichslösung
